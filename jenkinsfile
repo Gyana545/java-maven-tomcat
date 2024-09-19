@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven'
+    }
+
+    stages {
+        stage('scm checkout') {
+            steps {
+                sh 'whoami'
+                git branch: 'master', url: 'https://github.com/ranjit4github/LoginWebApp.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+            post {
+                success {
+                    echo 'Archiving the artifacts'
+                    archiveArtifacts artifacts: '**/*.war'
+                }
+            }
+        }
+
+        stage('Deployments') {
+            steps {
+                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://43.204.98.141:8080/')], 
+                contextPath: null, 
+                war: '**/*.war'
+            }
+        }
+    }
+}
