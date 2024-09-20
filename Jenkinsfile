@@ -45,8 +45,8 @@ pipeline {
                             // sshPut remote: remote, from: 'tomcat', into: './java'
                             
                             // Uncomment below lines when ready to use Docker
-                            // sshCommand remote: remote, command: 'sudo docker build -t tomcat-8.0 -f tomcat ./DockerJavaApp'
-                            // sshCommand remote: remote, command: 'sudo docker run -d -p 8080:8080 --name tomcat tomcat-8.0'
+                            sshCommand remote: remote, command: 'sudo docker build -t tomcat-lipu ./java'
+                            sshCommand remote: remote, command: 'sudo docker run -d -p 8080:8080 --name tomcat tomcat-lipu'
                             // sshCommand remote: remote, command: 'sudo docker rmi tomcat-8.0'
                             // sshRemove remote: remote, path: 'DockerJavaApp/LoginWebApp.war'
                             // sshRemove remote: remote, path: 'DockerJavaApp/tomcat'
