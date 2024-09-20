@@ -9,7 +9,7 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 sh 'whoami'
-                git branch: 'master', url: 'https://github.com/ranjit4github/LoginWebApp.git'
+                git branch: 'master', url: 'https://github.com/Gyana545/LoginWebApp.git'
             }
         }
 
