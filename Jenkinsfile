@@ -40,7 +40,7 @@ pipeline {
                             remote.user = USERNAME
                             remote.identityFile = KEYFILE
                             sshCommand remote: remote, command: 'ls -l && pwd'
-                            // sshPut remote: remote, from: 'target/LoginWebApp.war', into: './java'
+                            sshPut remote: remote, from: 'target/LoginWebApp.war', into: './java', sudo: true
                             // sshPut remote: remote, from: 'dump/devopsclass.sql', into: './java'
                             // sshPut remote: remote, from: 'tomcat', into: './java'
                             
