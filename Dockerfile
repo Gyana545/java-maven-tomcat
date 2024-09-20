@@ -1,8 +1,8 @@
 #Base image
-FROM tomcat:8.5
+FROM tomcat:8.0
 
 #COPY
-COPY ./target/LoginWebApp.war /usr/local/tomcat/webapps/
+ADD ./target/LoginWebApp.war /usr/local/tomcat/webapps/
 
 WORKDIR /usr/local/tomcat/webapps/
 

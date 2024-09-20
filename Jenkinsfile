@@ -31,6 +31,7 @@ pipeline {
                     // deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://43.204.98.141:8080/')], 
                     //        contextPath: null, 
                     //        war: '**/*.war'
+                    sh "ls -l && pwd"
                     withCredentials([sshUserPrivateKey(credentialsId: 'docker_server', usernameVariable: 'USERNAME', keyFileVariable: 'KEYFILE')]) {
                         script {
                             def remote = [:]
