@@ -40,9 +40,9 @@ pipeline {
                             remote.user = USERNAME
                             remote.identityFile = KEYFILE
                             
-                            sshPut remote: remote, from: 'target/LoginWebApp.war', into: './DockerJavaApp'
-                            sshPut remote: remote, from: 'dump/devopsclass.sql', into: './DockerJavaApp'
-                            sshPut remote: remote, from: 'tomcat', into: './DockerJavaApp'
+                            sshPut remote: remote, from: 'target/LoginWebApp.war', into: './java'
+                            sshPut remote: remote, from: 'dump/devopsclass.sql', into: './java'
+                            // sshPut remote: remote, from: 'tomcat', into: './java'
                             
                             // Uncomment below lines when ready to use Docker
                             // sshCommand remote: remote, command: 'sudo docker build -t tomcat-8.0 -f tomcat ./DockerJavaApp'
