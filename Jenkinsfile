@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('SCM Checkout') {
             steps {
+                sh "ls -l && pwd"
                 sh 'whoami'
                 git branch: 'master', url: 'https://github.com/Gyana545/LoginWebApp.git'
             }
@@ -15,6 +16,7 @@ pipeline {
 
         stage('Build') {
             steps {
+                sh "ls -l && pwd"
                 sh 'mvn clean package'
             }
             post {
