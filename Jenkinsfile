@@ -39,9 +39,9 @@ pipeline {
                             remote.allowAnyHosts = true
                             remote.user = USERNAME
                             remote.identityFile = KEYFILE
-                            
-                            sshPut remote: remote, from: 'target/LoginWebApp.war', into: './java'
-                            sshPut remote: remote, from: 'dump/devopsclass.sql', into: './java'
+                            sshCommand remote: remote, command: 'ls -l && pwd'
+                            // sshPut remote: remote, from: 'target/LoginWebApp.war', into: './java'
+                            // sshPut remote: remote, from: 'dump/devopsclass.sql', into: './java'
                             // sshPut remote: remote, from: 'tomcat', into: './java'
                             
                             // Uncomment below lines when ready to use Docker
