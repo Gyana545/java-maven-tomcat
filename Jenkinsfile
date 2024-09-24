@@ -26,12 +26,39 @@ pipeline {
                 }
             }
         }
-        stage ('upload to s3'){
-            steps{
-               withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                sh "aws s3 ls"
-                sh "aws s3 cp target/*.war s3://mbtechbucket/techdb/" 
-                } 
+        // stage ('upload to s3'){
+        //     steps{
+        //        withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+        //         sh "aws s3 ls"
+        //         sh "aws s3 cp target/*.war s3://mbtechbucket/techdb/" 
+        //         } 
+        //     }
+        // }
+         stage('Upload to S3 with s3 plugin') {
+            steps {
+                script {
+                    s3Upload consoleLogLevel: 'INFO', 
+                    dontSetBuildResultOnFailure: false, 
+                    dontWaitForConcurrentBuildCompletion: false, 
+                    entries: [[
+                        bucket: 'javabkt', 
+                        excludedFile: '', 
+                        flatten: false, 
+                        gzipFiles: false, 
+                        keepForever: false, 
+                        managedArtifacts: false,
+                        noUploadOnFailure: false, 
+                        selectedRegion: 'ap-south-1', 
+                        showDirectlyInBrowser: false, 
+                        sourceFile: 'target/*.war', 
+                        storageClass: 'STANDARD', 
+                        uploadFromSlave: false, 
+                        useServerSideEncryption: true
+                    ]], 
+                    pluginFailureResultConstraint: 'FAILURE', 
+                    profileName: 's3_gyana', 
+                    userMetadata: []
+                }
             }
         }
 
