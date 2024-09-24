@@ -26,7 +26,7 @@ pipeline {
                 }
             }
         }
-        stage (upload to s3){
+        stage ('upload to s3'){
             steps{
                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                 sh "aws s3 ls"
