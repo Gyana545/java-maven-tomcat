@@ -74,7 +74,7 @@ pipeline {
                     sh "ls -lrt"
                     sh "pwd"
                     sh "sudo docker build -t gyana545/mysql:v1 -f dockermysql /home/ec2-user/java"
-                    sh "sudo docker build -t gyana545/tomcat:v3 /home/ec2-user/java"
+                    sh "sudo docker build -t gyana545/tomcat:v3 -f dockertomcat /home/ec2-user/java"
                     sh 'sudo docker login -u "gyana545" --password gyana@1996 docker.io'
                     sh "sudo docker push gyana545/mysql:v1"
                     sh "sudo docker push gyana545/tomcat:v3"
