@@ -71,7 +71,7 @@ pipeline {
                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     sh "aws s3 cp s3://javabkt/LoginWebApp.war /home/ec2-user/java/"
                     sh "sudo docker image prune -a -f"
-                    sh "sudo docker build -t dockermysql -f dockermysql /home/ec2-user/java"
+                    sh "sudo docker build -t mysql -f dockermysql /home/ec2-user/java"
                     sh "sudo docker build -t tomcat /home/ec2-user/java"
                    }
                 }
