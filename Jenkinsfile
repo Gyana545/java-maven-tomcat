@@ -68,9 +68,9 @@ pipeline {
             }
             steps{
                 script{
-                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
-
-                   sh "aws s3 cp s3://javabkt/LoginWebApp.war /home/ec2-user/" 
+                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    sh "aws s3 cp s3://javabkt/LoginWebApp.war /home/ec2-user/" 
+                   }
                 }
             }
         }
