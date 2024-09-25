@@ -62,18 +62,18 @@ pipeline {
                 }
             }
         }
-        stage('download from s3 through agent'){
-            agent{
-                label 'docker_node'
-            }
-            steps{
-                script{
-                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
+        // stage('download from s3 through agent'){
+        //     agent{
+        //         label 'docker_node'
+        //     }
+        //     steps{
+        //         script{
+        //            withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')])
 
-                   sh "aws s3 cp s3://javabkt/LoginWebApp.war ./" 
-                }
-            }
-        }
+        //            sh "aws s3 cp s3://javabkt/LoginWebApp.war ./" 
+        //         }
+        //     }
+        // }
 
 //         stage('Deployments') {
 //             steps {
