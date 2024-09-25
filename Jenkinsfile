@@ -73,8 +73,8 @@ pipeline {
                     sh "sudo docker image prune -a -f"
                     sh "ls -lrt"
                     sh "pwd"
-                    sh "sudo docker build -t mysql -f dockermysql /home/ec2-user/java"
-                    sh "sudo docker build -t tomcat /home/ec2-user/java"
+                    sh "sudo docker build -t mysql:v1 -f dockermysql /home/ec2-user/java"
+                    sh "sudo docker build -t tomcat:v3 /home/ec2-user/java"
                    }
                 }
             }
