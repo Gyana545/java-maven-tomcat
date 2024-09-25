@@ -17,6 +17,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "ls -l && pwd"
+                sh 'whoami'
                 sh 'mvn clean package'
             }
             post {
