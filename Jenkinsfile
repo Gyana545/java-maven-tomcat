@@ -69,8 +69,8 @@ pipeline {
             }
             steps{
                 script{
+                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]){
                     sh """
-                   withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     aws s3 cp s3://javabkt/LoginWebApp.war .
                     sudo docker image prune -a -f
                     ls -lrt
@@ -80,8 +80,8 @@ pipeline {
                     sudo docker login -u "gyana545" --password gyana@1996 docker.io
                     sudo docker push gyana545/mysql:v1
                     sudo docker push gyana545/tomcat:v3
-                   }
                    """
+                   }
                 }
             }
         stage('deploy through ansible'){
