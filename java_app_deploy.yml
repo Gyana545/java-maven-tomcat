@@ -1,0 +1,15 @@
+---
+- hosts: docker
+  become: true
+  tasks:  # Change 'task' to 'tasks'
+    - name: Git checkout
+      git:
+        repo: https://github.com/Gyana545/java-maven-tomcat.git
+        dest: /home/ec2-user/ansible-docker
+          #version: java_app_Docker      # for private repository
+          #accept_hostkey: yes           # for private repo
+          #key_file: /home/ec2-user/.ssh/id_rsa  # for private repo
+    - name: Docker compose up
+      shell:
+        chdir: /home/ec2-user/ansible-docker/
+        cmd: docker-compose up -d
