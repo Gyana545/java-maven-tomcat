@@ -68,16 +68,18 @@ pipeline {
             }
             steps{
                 script{
+                    sh """
                    withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    sh "aws s3 cp s3://javabkt/LoginWebApp.war ."
-                    sh "sudo docker image prune -a -f"
-                    sh "ls -lrt"
-                    sh "pwd"
-                    sh "sudo docker build -t gyana545/mysql:v1 -f dockermysql ."
-                    sh "sudo docker build -t gyana545/tomcat:v3 -f dockertomcat ."
-                    sh 'sudo docker login -u "gyana545" --password gyana@1996 docker.io'
-                    sh "sudo docker push gyana545/mysql:v1"
-                    sh "sudo docker push gyana545/tomcat:v3"
+                    aws s3 cp s3://javabkt/LoginWebApp.war .
+                    sudo docker image prune -a -f
+                    ls -lrt
+                    pwd
+                    sudo docker build -t gyana545/mysql:v1 -f dockermysql .
+                    sudo docker build -t gyana545/tomcat:v3 -f dockertomcat .
+                    sudo docker login -u "gyana545" --password gyana@1996 docker.io
+                    sudo docker push gyana545/mysql:v1
+                    sudo docker push gyana545/tomcat:v3
+                    """
                    }
                 }
             }
