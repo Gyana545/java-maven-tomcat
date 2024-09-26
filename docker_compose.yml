@@ -1,0 +1,23 @@
+version: '3'  # Specify the Compose file version
+
+services:
+  tomcat:
+    image: gyana545/tomcat:v3  # Specify the container image
+    ports:
+      - "8080:8080"  # Map host port 80 to container port 80
+    links:
+      - db
+
+  db:
+    image: gyana545/mysql:v1  # Specify the container image
+    ports:
+      - "3306:3306"  # Map host port 80 to container port 80
+
+
+# # Optional: define networks and volumes if needed
+# networks:
+#   default:
+#     driver: bridge
+
+# volumes:
+#   html:
