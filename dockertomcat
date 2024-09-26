@@ -1,7 +1,5 @@
-#Base image
 FROM tomcat:8.0
 
-#COPY
 ADD *.war /usr/local/tomcat/webapps/
 
 WORKDIR /usr/local/tomcat/webapps/
