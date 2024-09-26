@@ -88,7 +88,7 @@ pipeline {
             }
             steps{
                 script{
-                   sh "cd ansible/ && ansible-playbook java_app_deploy.yml"
+                   sh "sudo ansible-playbook java_app_deploy.yml"
                    cleanWs()
                    echo "clean Workspace"
                 }
