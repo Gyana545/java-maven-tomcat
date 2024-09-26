@@ -82,13 +82,13 @@ pipeline {
                 }
             }
         }
-        stage(deploy through ansible){
+        stage('deploy through ansible'){
             agent{
                 label 'ansible'
             }
             steps{
                 script{
-                   sh "cd Ansible/ && ansible-playbook Java_Deploy.yml"
+                   sh "cd ansible-docker/ && ansible-playbook java_app_deploy.yml"
                    cleanWs()
                    echo "clean Workspace"
                 }
