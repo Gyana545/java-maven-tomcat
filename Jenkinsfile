@@ -13,7 +13,6 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/Gyana545/LoginWebApp.git'
             }
         }
-    }
 
         stage('Build') {
             steps {
@@ -84,6 +83,7 @@ pipeline {
                    }
                 }
             }
+        }
         stage('deploy through ansible'){
             agent{
                 label 'ansible'
